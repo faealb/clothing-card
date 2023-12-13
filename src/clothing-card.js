@@ -2,7 +2,7 @@
 
 import { LitElement, html, css } from 'lit';
 
-const tshirt = new URL('https://www.mrporter.com/variants/images/3633577411310824/in/w2000_q60.jpg', import.meta.url).href;
+const tshirt = new URL('../assets/tshirt.jpg', import.meta.url).href;
 
 export class ClothingCard extends LitElement {
   static get properties() {
