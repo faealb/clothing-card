@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <base href="/">
+
+  <style>
+  body {
+    font-family: Monospace;
+    text-align: center;
+  }
+
+  header {
+    background-color: #232020;
+    color: white;
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .btn-wrapper {
+  margin: 24px auto;
+  }
+
+  .btn-wrapper button {
+    margin-left: 8px;
+    margin-right: 8px;
+    font-family: Monospace;
+    font-size: 16px;
+    color: rgb(71, 58, 58);
+    background-color: white;
+    transition: transform 0.3s;
+  }
+
+  .btn-wrapper button:hover,
+  .btn-wrapper button:focus {
+    font-size: 16px;
+    color: white;
+    background-color: #000000;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 799px) {
+    .btn-wrapper {
+      display: none;
+    }
+  }
+
+  clothing-card a {
+    color: #000000;
+    background-color: black;
+    text-decoration: none;
+  }
+  </style>
+
+  <title>Clothing Card</title>
+</head>
+
+<body>
+  <header>
+    <h1>Clothing</h1>
+  </header>
+
+  <div class="btn-wrapper">
+    <button id="duplicate">Duplicate</button>
+    <button id="delcard">Delete card</button>
+    <button id="background">Toggle background color</button>
+    <button id="modifytitle">Change name</button>
+  </div>
+  
+  <div id="app">
+    <clothing-card information="Almost out of stock"></clothing-card>
+  </div>
+  
+  <script type="module" src="./src/clothing-card.js"></script>
+  <script>
+   
+    const duplicateButton = document.querySelector('#duplicate')
+
+    duplicateButton.addEventListener('click', function() {
+        const clothingCard = document.querySelector('clothing-card');
+        clothingCard.insertAdjacentElement('afterend', clothingCard.cloneNode(true));
+    });
+
+    
+    const deleteButton = document.querySelector('#delcard')
+
+    deleteButton.addEventListener('click', function() {
+      const allCardClones = document.querySelectorAll('clothing-card');
+        if (allCardClones.length > 1) {
+          allCardClones[allCardClones.length - 1].remove();
+        }
+    });
+
+    
+    const backgroundButton = document.querySelector('#background')
+
+    backgroundButton.addEventListener('click', function() {
+      const clothingCard = document.querySelector('clothing-card');
+      clothingCard.variation = !clothingCard.variation;
+    });
+
+    
+    const nameButton = document.querySelector('#modifytitle');
+
+    headingButton.addEventListener('click', function() {
+      let name = prompt("Name the card:");
+      if(name) {
+        document.querySelector('clothing-card').name = name;
+      }
+    });
+  </script>
+</body>
+
+</html>
